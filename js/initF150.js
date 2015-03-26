@@ -9,7 +9,7 @@ var ChartMode = 'Line';// Line: 折線圖 ,Bar :長條圖
 var Resource_id = ''; //資料表編號
 var ChartTitle = ''; //圖表標頭
 
-//新增地圖模組與程式說明
+//3/27新增地圖模組與程式說明
 
 $(document).ready(function () {
 
