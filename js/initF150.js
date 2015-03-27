@@ -71,7 +71,8 @@ function getGeoData(xmldata) {
     switch (ChartMode) {
     case 'Line':
         //建立人口折線圖下拉式選單 chart1_div
-        geoDataObj.createMutiLine(ChartTitle,'', geoTable, 'chart1_div');
+        geoDataObj.createMutiLine(ChartTitle, '', geoTable, 'chart1_div');
+        geoDataObj.createGeoChart(ChartTitle, '', geoTable, 'chart2_div');
         break;
     case 'Bar':
         //建立人口長條圖 chart1_div
@@ -357,6 +358,7 @@ function formGeoData(xmldata) {
         case 'Line':
             //建立人口折線圖下拉式選單 chart1_div
             geoDataObj.createMutiLine(ChartTitle, unit, geoTable, 'chart1_div');
+            geoDataObj.createGeoChart(ChartTitle, unit, geoTable, 'chart2_div');
             break;
         case 'Bar':
             //建立人口長條圖 chart1_div

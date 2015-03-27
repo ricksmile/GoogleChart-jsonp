@@ -248,12 +248,122 @@ CreateGeoDataObj = function() {
 
   var chart = new google.visualization.ComboChart(document.getElementById(chartId));
   chart.draw(data, options);
-    
-
-     
-
+   
      }//end  this.createMutiBar
+ 
+ 
+  //建立地圖城市圖表
+     this.createGeoChart = function(title,unit,geotable,chartId) {
+     
+       var data=new google.visualization.DataTable();
+        //儲存欄位名稱
+        var columnDataArray=new Array(0);
+        //讀取資料個數
+        var NumberOfColumns= geotable.getNumberOfColumns();
+        var NumberOfRows =geotable.getNumberOfRows();
+             //columnDataArray.push(geotable.getColumnLabel(0));
 
+           //建立欄位
+        data.addColumn('string', 'Country');
+         data.addColumn('number', 'Popularity'); 
+
+
+
+        for (var i = 0; i < NumberOfRows; i++) {
+          var rowDataArray=new Array(0);
+          //對照英文陣列
+          var engName='';
+          switch(geotable.getFormattedValue(i, 0)){
+              case '新北市':
+                engName='New Taipei';         
+                break;
+                 case '臺北市':
+                engName='Taipei';  
+                break;
+                 case '臺中市':
+                engName='Taichung';  
+                break;
+                 case '臺南市':
+                engName='Tainan';  
+                break;
+                 case '高雄市':
+                engName='Kaohsiung';  
+                break;
+                 case '宜蘭縣':
+                engName='Yilan';  
+                break;
+                 case '桃園市':
+                engName='Taoyuan';  
+                break;
+                 case '新竹縣':
+                engName='Hsinchu County';  
+                break;
+                 case '苗栗縣':
+                engName='Miaoli';  
+                break;
+                 case '彰化縣':
+                engName='Changhua';  
+                break;
+                 case '南投縣':
+                engName='Nantou';  
+                break;
+                 case '雲林縣':
+                engName='Yunlin';  
+                break;
+                 case '嘉義縣':
+                engName='Chiayi County';  
+                break;
+                 case '屏東縣':
+                engName='Pingtung';  
+                break;
+                
+                 case '臺東縣':
+                engName='Taitung';  
+                break;
+                 case '花蓮縣':
+                engName='Hualien';  
+                break;
+                 case '澎湖縣':
+                engName='New Taipei';  
+                break;
+                  case '基隆市':
+                engName='Keelung';  
+                break;
+                  case '新竹市':
+                engName='Hsinchu City';  
+                break;
+                  case '嘉義市':
+                engName='Chiayi City';  
+                break;
+                  case '金門縣':
+                engName='Kinmen';  
+                break;
+                  case '連江縣':
+                engName='Lienchiang';  
+                break;
+          
+          }
+
+          rowDataArray.push(engName);
+          rowDataArray.push(Number(geotable.getFormattedValue(i, 1)));
+          data.addRow(rowDataArray);
+         }
+      
+       
+
+        var options = {
+           region: 'TW',
+        displayMode: 'markers',
+        colorAxis: {colors: ['green', 'blue']}
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById(chartId));
+
+        chart.draw(data, options);
+     
+     
+     
+     };//end    this.createGeoChart = function(title,unit,geotable,chartId) {
 
 
 
